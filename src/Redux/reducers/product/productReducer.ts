@@ -1,4 +1,4 @@
-import { ProductsState, ActionsProduct } from "../../actions/event/actionTypes";
+import { ProductsState, ActionsProduct } from "../../actions/products/actionTypes";
 
 const initialState: ProductsState = {
   data: [],

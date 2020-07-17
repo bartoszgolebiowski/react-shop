@@ -2,7 +2,7 @@ import {
   CLEAR_CART,
   ADD_ITEM_CART,
   REMOVE_ITEM_CART,
-} from "../cart/actionTypes";
+} from "./actionTypes";
 import { TrendingProduct } from "../../../Models/products";
 
 export const clearCartAction = () => ({
@@ -18,3 +18,4 @@ export const removeItemFromCartAction = (id: number) => ({
   type: REMOVE_ITEM_CART,
   payload: { id },
 });
+
