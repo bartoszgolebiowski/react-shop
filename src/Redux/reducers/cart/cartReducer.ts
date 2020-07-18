@@ -12,17 +12,23 @@ const reducer = (state = initialState, action: ActionsCart) => {
       return {
         ...state,
         items: newItems,
-        price: newItems.map((cartItem) => +cartItem.price),
+        price: newItems.reduce((acc, cartItem) => acc + +cartItem.price, 0),
       };
     }
     case "REMOVE_ITEM_CART": {
       const newItems = state.items.filter(
-        (cartItem) => cartItem.listing_id === action.payload.id
+        (cartItem) => cartItem.listing_id !== action.payload.id
       );
+      if (newItems.length === 0)
+        return {
+          ...state,
+          items: [],
+          price: 0,
+        };
       return {
         ...state,
         items: newItems,
-        price: newItems.map((cartItem) => +cartItem.price),
+        price: newItems.map((cartItem) => +cartItem.price) || 0,
       };
     }
     case "CLEAR_CART": {

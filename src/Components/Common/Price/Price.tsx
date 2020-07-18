@@ -1,17 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
+type PriceType = {
+  price: number;
+  currency?: string;
+};
+
 const useStyles = makeStyles((theme) => ({
   price: {
     alignItems: "center",
     fontSize: "1rem",
   },
 }));
-
-type PriceType = {
-  price: number;
-  currency?: string;
-};
 
 export const Price = ({ price, currency = "$" }: PriceType) => {
   const classes = useStyles();

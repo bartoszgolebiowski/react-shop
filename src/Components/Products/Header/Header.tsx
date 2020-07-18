@@ -1,14 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
-import ProductsCart from "../../Common/Cart";
+import ProductsCart from "../../Common/CartIcon";
 import ProductsPrice from "../../Common/Price/Price";
-import ProductSearchInput from "../../Common/Input/SearchInput/SearchInput";
-import { useSelector, useDispatch } from "react-redux";
+import ProductsSearchInput from "../../Common/Input/SearchInput/index";
 import { RootState } from "../../../Redux/reducers/rootReducer";
-import { useDebounce } from "../../../Utils/customHooks/useDebounce";
+
+type ProductsHeaderType = {
+  isCart: boolean;
+  onClick:
+    | ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)
+    | undefined;
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,31 +33,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const ProductHeader = (props: any) => {
+export const ProductsHeader = ({ isCart, onClick }: ProductsHeaderType) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const searchValue = useSelector(
-    (state: RootState) => state.productReducer.searchValue
-  );
-  const debouncedSearchTerm = useDebounce(searchValue, 500);
-
-  useEffect(
-    () => {
-      if (debouncedSearchTerm) {
-        dispatch()
-      }
-    },
-    [debouncedSearchTerm] 
-  );
+  const price = useSelector((state: RootState) => state.cartReducer.price);
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3} justify="flex-end">
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <ProductsCart showCart={(e) => console.log(e)} />
-            <ProductsPrice price={666.66} />
-            <ProductSearchInput onChange={(e) => console.log(e)} />
+            <ProductsCart isCart={isCart} onClick={onClick} />
+            <ProductsPrice price={price} />
+            {!isCart && <ProductsSearchInput />}
           </Paper>
         </Grid>
       </Grid>
@@ -59,4 +52,4 @@ export const ProductHeader = (props: any) => {
   );
 };
 
-export default ProductHeader;
+export default ProductsHeader;

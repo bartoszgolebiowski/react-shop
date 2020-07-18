@@ -14,6 +14,7 @@ type SearchInputType = {
 export const SearchInput = ({ onChange }: SearchInputType) => {
   return (
     <Input
+      placeholder="Search..."
       disableUnderline
       onChange={onChange}
       endAdornment={

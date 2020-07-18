@@ -1,34 +1,24 @@
-import { ProductsState, ActionsProduct } from "../../actions/products/actionTypes";
+import {
+  ProductsState,
+  ActionsProduct,
+} from "../../actions/products/actionTypes";
 
 const initialState: ProductsState = {
   data: [],
-  searchValue: '',
+  searchValue: "",
   loading: true,
   error: false,
-  page: 0,
-  offset: 0,
 };
 
 const reducer = (state = initialState, action: ActionsProduct) => {
   switch (action.type) {
     case "FETCH_PRODUCTS": {
+
       return {
         ...state,
         loading: false,
         error: false,
-        data: action.payload.data.results,
-        page: 1,
-        offset: action.payload.offset,
-      };
-    }
-    case "FETCH_APPEND_PRODUCTS": {
-      return {
-        ...state,
-        loading: false,
-        error: false,
-        data: [action.payload.data.results, ...state.data],
-        offset: state.offset + action.payload.offset,
-        page: state.page++,
+        data: action.payload.data,
       };
     }
     case "FETCH_LOADING_PRODUCTS": {
@@ -42,6 +32,12 @@ const reducer = (state = initialState, action: ActionsProduct) => {
         ...state,
         loading: false,
         error: true,
+      };
+    }
+    case "SET_FILTER_PRODUCTS": {
+      return {
+        ...state,
+        searchValue: action.payload.filter,
       };
     }
     default:
