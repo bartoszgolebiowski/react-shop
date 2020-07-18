@@ -9,6 +9,7 @@ import ProductsListLoading from "../ProductsListLoading";
 import { RootState } from "../../../../Redux/reducers/rootReducer";
 import { addItemToCartAction } from "../../../../Redux/actions/cart/Actions";
 import { filterByName } from "../../../../Services/products";
+import { PRODUCTS_LIST_EMPTY } from "../../../../Config/products/contants";
 
 export const ProductsGridList = () => {
   const dispatch = useDispatch();
@@ -25,9 +26,7 @@ export const ProductsGridList = () => {
   if (loading) return <ProductsListLoading />;
 
   if (items.length === 0)
-    return (
-      <ProductsListEmpty text="Currently there is no products available" />
-    );
+    return <ProductsListEmpty text={PRODUCTS_LIST_EMPTY} />;
 
   return (
     <ProductsList

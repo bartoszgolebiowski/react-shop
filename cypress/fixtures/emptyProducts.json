@@ -1,0 +1,13 @@
+{
+  "count": 0,
+  "results": [],
+  "params": { "limit": "100", "offset": 0, "page": "1" },
+  "type": "Listing",
+  "pagination": {
+    "effective_limit": 100,
+    "effective_offset": 0,
+    "next_offset": 100,
+    "effective_page": 1,
+    "next_page": 2
+  }
+}

@@ -36,6 +36,6 @@ export const fetchProductsAction = (fetchData: Function) => (
 ) => {
   dispatch(fetchProductsLoadingAction());
   return fetchData()
-    .then((res: any) => dispatch(saveProductsAction(res)))
-    .catch((err: any) => dispatch(fetchProductsErrorAction()));
+    .then((res: TrendingProduct[]) => dispatch(saveProductsAction(res)))
+    .catch(() => dispatch(fetchProductsErrorAction()));
 };

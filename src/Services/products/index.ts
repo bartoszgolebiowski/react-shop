@@ -1,8 +1,11 @@
+import fetch from "cross-fetch";
 import { checkStatus } from "../general";
 import {
   TrendingProductsResponse,
   TrendingProduct,
 } from "../../Models/products";
+import { PRODUCTS_LIST_FETCH_ERROR } from "../../Config/products/contants";
+
 
 const api_key = "zfbmo6g0aar1s1ppg350oqro";
 const API = "https://community-etsy.p.rapidapi.com/listings/trending";
@@ -42,7 +45,7 @@ export const getTrendingProducts = (
     })}`,
     options()
   )
-    .then(checkStatus("Could not fetch products"))
+    .then(checkStatus(PRODUCTS_LIST_FETCH_ERROR))
     .then((res) => res.json())
     .then(filterErrorProducts);
 };
@@ -50,7 +53,10 @@ export const getTrendingProducts = (
 export const filterErrorProducts = (
   response: TrendingProductsResponse
 ): TrendingProduct[] => {
-  return response.results.filter((product) => !product.hasOwnProperty("error_messages") && product.price !== undefined)
+  return response.results.filter(
+    (product) =>
+      !product.hasOwnProperty("error_messages") && product.price !== undefined
+  );
 };
 
 export const filterByName = (name: string) => (product: TrendingProduct) =>

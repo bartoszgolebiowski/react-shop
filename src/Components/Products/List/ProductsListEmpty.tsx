@@ -29,7 +29,7 @@ export const ProductsListEmpty = ({ text }: ProductionListEmptyType) => {
   return (
     <Card className={classes.card}>
       <div className={classes.empty}>
-        <p>{text}</p>
+        <p data-cy="product-list-empty-text">{text}</p>
       </div>
     </Card>
   );
