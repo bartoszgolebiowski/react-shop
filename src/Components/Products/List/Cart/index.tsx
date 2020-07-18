@@ -16,6 +16,7 @@ export const CartGridList = () => {
 
   return (
     <ProductsList
+      removeCartIcon={true}
       items={items}
       cartAction={(item) => dispatch(removeItemFromCartAction(item.listing_id))}
     />

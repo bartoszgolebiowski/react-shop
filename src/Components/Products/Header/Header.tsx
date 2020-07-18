@@ -18,8 +18,9 @@ type ProductsHeaderType = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    position: "sticky",
+    top: 0,
+    zIndex: 10,
+    position:'sticky'
   },
   paper: {
     display: "flex",
@@ -27,8 +28,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
-    "& > *": {
-      padding: "0 1rem",
+    [theme.breakpoints.up("sm")]: {
+      "& > *": {
+        padding: "0 1rem",
+      },
     },
   },
 }));
@@ -38,17 +41,15 @@ export const ProductsHeader = ({ isCart, onClick }: ProductsHeaderType) => {
   const price = useSelector((state: RootState) => state.cartReducer.price);
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3} justify="flex-end">
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <ProductsCart isCart={isCart} onClick={onClick} />
-            <ProductsPrice price={price} />
-            {!isCart && <ProductsSearchInput />}
-          </Paper>
-        </Grid>
+    <Grid container spacing={3} justify="flex-end" className={classes.root}>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          <ProductsCart isCart={isCart} onClick={onClick} />
+          <ProductsPrice price={price} />
+          {!isCart && <ProductsSearchInput />}
+        </Paper>
       </Grid>
-    </div>
+    </Grid>
   );
 };
 

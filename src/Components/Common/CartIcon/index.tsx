@@ -13,6 +13,7 @@ type ProductsCartType = {
 
 export const ProductsCart = ({ isCart, onClick }: ProductsCartType) => {
   const items = useSelector((state: RootState) => state.cartReducer.items);
+
   return (
     <CartIcon
       color={isCart ? "secondary" : "primary"}

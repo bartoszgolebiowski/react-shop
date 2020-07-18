@@ -28,7 +28,7 @@ const reducer = (state = initialState, action: ActionsCart) => {
       return {
         ...state,
         items: newItems,
-        price: newItems.map((cartItem) => +cartItem.price) || 0,
+        price: newItems.reduce((acc, cartItem) => acc + +cartItem.price, 0),
       };
     }
     case "CLEAR_CART": {

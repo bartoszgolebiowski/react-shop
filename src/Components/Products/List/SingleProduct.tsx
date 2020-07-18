@@ -10,8 +10,10 @@ import Typography from "@material-ui/core/Typography/Typography";
 
 import CartIcon from "../../Common/CartIcon/CartIcon";
 import { TrendingProduct } from "../../../Models/products";
+import RemoveCartIcon from "../../Common/CartIcon/RemoveCartIcon";
 
 type SingleProductType = {
+  removeCartIcon?: boolean;
   item: TrendingProduct;
   cartAction:
     | ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)
@@ -21,28 +23,52 @@ type SingleProductType = {
 const useStyles = makeStyles((theme) => ({
   card: {
     maxHeight: "30rem",
+    minHeight: "30rem",
+    margin: "2rem 0",
+    [theme.breakpoints.up("sm")]: {
+      maxHeight: "28rem",
+      minHeight: "28rem",
+      margin: "2rem 0",
+    },
   },
   head: {
-    maxHeight: "7rem",
+    maxHeight: "10rem",
+    minHeight: "10rem",
+    overflow: "hidden",
+    [theme.breakpoints.up("sm")]: {
+      maxHeight: "7rem",
+      minHeight: "7rem",
+    },
   },
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
   },
   content: {
-    maxHeight: "6rem",
+    maxHeight: "10rem",
+    minHeight: "10rem",
+    overflow: "hidden",
+    [theme.breakpoints.up("sm")]: {
+      maxHeight: "8rem",
+      minHeight: "8rem",
+    },
   },
   footer: {
-    height: "4rem",
+    maxHeight: "4rem",
+    minHeight: "4rem",
   },
 }));
 
-export const SingleProduct = ({ item, cartAction }: SingleProductType) => {
+export const SingleProduct = ({
+  removeCartIcon = false,
+  item,
+  cartAction,
+}: SingleProductType) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={6} sm={4} md={3}>
-      <Card className={classes.card}>
+    <Grid className={classes.card} item xs={6} sm={4} md={3}>
+      <Card>
         <CardHeader
           className={classes.head}
           title={item.title.substr(0, 30)}
@@ -59,7 +85,11 @@ export const SingleProduct = ({ item, cartAction }: SingleProductType) => {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <CartIcon onClick={cartAction} />
+          {removeCartIcon ? (
+            <RemoveCartIcon onClick={cartAction} />
+          ) : (
+            <CartIcon onClick={cartAction} />
+          )}
         </CardActions>
       </Card>
     </Grid>
