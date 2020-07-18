@@ -15,8 +15,11 @@ const useStyles = makeStyles((theme) => ({
 
 export const Price = ({ price, currency = "$" }: PriceType) => {
   const classes = useStyles();
-  console.log(price)
-  return <p className={classes.price}>{`${price.toFixed(2)} ${currency}`}</p>;
+  return (
+    <p data-cy="products-price" className={classes.price}>
+      {`${price.toFixed(2)} ${currency}`}
+    </p>
+  );
 };
 
 export default Price;

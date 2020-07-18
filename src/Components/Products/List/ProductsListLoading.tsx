@@ -25,7 +25,10 @@ export const ProductsListLoading = () => {
   return (
     <Card className={classes.card}>
       <div className={classes.loading}>
-        <CircularProgress size="10rem" />
+        <CircularProgress
+          data-cy="product-list-loading-spinner"
+          size="10rem"
+        />
       </div>
     </Card>
   );

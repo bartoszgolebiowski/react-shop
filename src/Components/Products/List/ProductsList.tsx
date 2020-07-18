@@ -16,7 +16,13 @@ export const ProductsList = ({
   cartAction,
 }: ProductsListType) => {
   return (
-    <Grid container spacing={4} alignContent="space-around" alignItems="center">
+    <Grid
+      container
+      spacing={4}
+      alignContent="space-around"
+      alignItems="center"
+      data-cy="products-list"
+    >
       {items.map((item, index) => (
         <SingleProduct
           key={item.listing_id}

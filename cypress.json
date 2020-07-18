@@ -1,1 +1,4 @@
-{}
+{
+  "baseUrl": null,
+  "defaultCommandTimeout": 10000
+}

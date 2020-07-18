@@ -29,7 +29,11 @@ export const CartIcon = ({
   return (
     <div onClick={onClick}>
       <IconButton>
-        <StyledBadge badgeContent={badgeContent} color="secondary">
+        <StyledBadge
+          badgeContent={badgeContent}
+          color="secondary"
+          data-cy="cart-count"
+        >
           <ShoppingCartIcon color={color} fontSize="default" />
         </StyledBadge>
       </IconButton>

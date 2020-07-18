@@ -68,7 +68,7 @@ export const SingleProduct = ({
 
   return (
     <Grid className={classes.card} item xs={6} sm={4} md={3}>
-      <Card>
+      <Card data-cy={`single-product-${item.listing_id}`}>
         <CardHeader
           className={classes.head}
           title={item.title.substr(0, 30)}
