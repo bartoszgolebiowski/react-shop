@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
 
 export const Price = ({ price, currency = "$" }: PriceType) => {
   const classes = useStyles();
-  return <p className={classes.price}>{`${price} ${currency}`}</p>;
+  console.log(price)
+  return <p className={classes.price}>{`${price.toFixed(2)} ${currency}`}</p>;
 };
 
 export default Price;
