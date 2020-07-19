@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "@material-ui/core/Card/Card";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import Card from "@material-ui/core/Card";
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -25,10 +25,7 @@ export const ProductsListLoading = () => {
   return (
     <Card className={classes.card}>
       <div className={classes.loading}>
-        <CircularProgress
-          data-cy="product-list-loading-spinner"
-          size="10rem"
-        />
+        <CircularProgress data-cy="product-list-loading-spinner" size="10rem" />
       </div>
     </Card>
   );

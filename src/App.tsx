@@ -1,5 +1,5 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { Provider } from "react-redux";
 import store from "./Redux/store/store";
 import Products from "./Containers/Products/Products";
