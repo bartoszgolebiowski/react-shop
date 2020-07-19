@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid/Grid";
+import Grid from "@material-ui/core/Grid";
 
 import { TrendingProduct } from "../../../Models/products";
 import SingleProduct from "./SingleProduct";

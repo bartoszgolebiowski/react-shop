@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "@material-ui/core/Card/Card";
-import makeStyles from "@material-ui/core/styles/makeStyles";
+import Card from "@material-ui/core/Card";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   PRODUCTS_LIST_ERROR,
   REFRESH,

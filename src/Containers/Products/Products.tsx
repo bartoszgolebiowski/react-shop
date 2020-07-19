@@ -1,12 +1,13 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import Container from "@material-ui/core/Container/Container";
+import Container from "@material-ui/core/Container";
 import ProductsHeader from "../../Components/Products/Header/Header";
 import ProductsGridList from "../../Components/Products/List/Products/index";
+import CartGridList from "../../Components/Products/List/Cart";
 import { fetchProductsAction } from "../../Redux/actions/products/Actions";
 import { getTrendingProducts } from "../../Services/products";
-import CartGridList from "../../Components/Products/List/Cart";
+
 
 export const Products = () => {
   const dispatch = useDispatch();
