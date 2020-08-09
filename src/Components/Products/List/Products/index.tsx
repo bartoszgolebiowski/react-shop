@@ -23,6 +23,7 @@ export const ProductsGridList = () => {
   }, [data, searchValue]);
 
   if (error) return <ProductsListError />;
+  
   if (loading) return <ProductsListLoading />;
 
   if (items.length === 0)
