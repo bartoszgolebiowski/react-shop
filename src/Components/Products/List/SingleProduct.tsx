@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import { useInView } from "react-intersection-observer";
 
 import CartIcon from "../../Common/CartIcon/CartIcon";
 import { TrendingProduct } from "../../../Models/products";
@@ -65,6 +66,9 @@ export const SingleProduct = ({
   cartAction,
 }: SingleProductType) => {
   const classes = useStyles();
+  const [ref, inView] = useInView({
+    threshold: 0,
+  });
 
   return (
     <Grid className={classes.card} item xs={6} sm={4} md={3}>
@@ -75,8 +79,9 @@ export const SingleProduct = ({
           subheader={`${item.price} ${item.currency_code}`}
         />
         <CardMedia
+          ref={ref}
           className={classes.media}
-          image={item.Images[0]?.url_170x135 || ""}
+          image={inView ? item.Images[0]?.url_170x135 || "" : ""}
           title={item.title}
         />
         <CardContent className={classes.content}>
